@@ -10,10 +10,13 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set( PGR_VERSION "2.2.1" )
-set( COPYRIGHT_YEARS "2021-2022" )
-
+SET( PGR_VERSION "2.2.1" )
+SET( COPYRIGHT_YEARS "2021-2022" )
 INCLUDE(GNUInstallDirs)
+
+SET(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Syneltec SA") #required
+INCLUDE(CPack)
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     add_definitions(-Qunused-arguments)
@@ -102,7 +105,11 @@ endif()
 
 target_link_libraries(media-downloader Qt5::Widgets Qt5::Core Qt5::Network)
 
-install(TARGETS media-downloader RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS media-downloader
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR}
+    DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
 
 install(FILES src/media-downloader.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
 install(FILES src/media-downloader.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps)
@@ -117,6 +124,7 @@ file(WRITE ${PROJECT_BINARY_DIR}/version.h
 #define QTVERSION \"${Qt5Core_VERSION}\"
 #define COPYRIGHT \"${COPYRIGHT_YEARS}\"
 ")
+
 
 if(WIN32)
     find_path(libstdc_PATH libstdc++-6.dll)
