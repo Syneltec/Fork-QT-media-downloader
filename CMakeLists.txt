@@ -112,7 +112,7 @@ install(TARGETS media-downloader
 )
 
 install(FILES src/media-downloader.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-install(FILES src/media-downloader.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps)
+install(FILES src/media-downloader.png     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps)
 
 install(DIRECTORY translations DESTINATION ${CMAKE_INSTALL_DATADIR}/media-downloader FILES_MATCHING PATTERN "*.qm")
 
@@ -174,18 +174,18 @@ DisableProgramGroupPage=yes
 OutputBaseFilename=MediaDownloader-${PGR_VERSION}.setup
 
 [Tasks]
-Name: \"desktopicon\"; Description: \"{cm:CreateDesktopIcon}\"; GroupDescription: \"{cm:AdditionalIcons}\"; Flags: unchecked
+Name: \"desktopicon\";     Description: \"{cm:CreateDesktopIcon}\";     GroupDescription: \"{cm:AdditionalIcons}\"; Flags: unchecked
 Name: \"quicklaunchicon\"; Description: \"{cm:CreateQuickLaunchIcon}\"; GroupDescription: \"{cm:AdditionalIcons}\"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: {#MyEXELocation}; DestDir: {app}; Flags: ignoreversion
+Source: {#MyEXELocation};                           DestDir: {app}; Flags: ignoreversion
 Source: {#MyBuildPath}\\media-downloader.exe.local; DestDir: {app}; Flags: ignoreversion
 
-Source: {#MyLibrariesLocation}\\*.dll; DestDir: {app} ; Flags: ignoreversion
+Source: {#MyLibrariesLocation}\\*.dll;              DestDir: {app} ; Flags: ignoreversion
 
-Source: {#MySourcesPath}\\LICENSE.txt; DestDir: {app}; Flags: ignoreversion
+Source: {#MySourcesPath}\\LICENSE.txt;              DestDir: {app}; Flags: ignoreversion
 
-Source: {#MyLibrariesLocation}\\bearer\\* ; DestDir: {app}\\bearer; Flags: ignoreversion
+Source: {#MyLibrariesLocation}\\bearer\\* ;         DestDir: {app}\\bearer; Flags: ignoreversion
 
 Source: {#MyLibrariesLocation}\\iconengines\\* ; DestDir: {app}\\iconengines; Flags: ignoreversion
 
